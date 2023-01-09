@@ -1,0 +1,3441 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ACORCHETE
+    AMPERSANT
+    APOSTROFE
+    BREAK
+    CASE
+    CCORCHETE
+    COMENTARIO
+    COMILLAS
+    COMMENTS
+    COMMENTS_C99
+    CONST
+    CONTINUE
+    DOSPUNTOS
+    DPUNTOS_DPUNTOS
+    FUNCT_FLECHA
+    HASHTAG
+    INCREMENTO
+    MASMAS
+    MENOSMENOS
+    NOT
+    PUNTO
+    STRUCT
+    SWITCH
+    TYPEDEF
+    XOR
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> funciones
+Rule 2     funciones -> funcion
+Rule 3     funciones -> funciones funcion
+Rule 4     funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE
+Rule 5     return -> RETURN ID PUNTOCOMA
+Rule 6     return -> RETURN expresion PUNTOCOMA
+Rule 7     return -> empty
+Rule 8     parametros -> parametro
+Rule 9     parametros -> parametro COMA parametros
+Rule 10    parametros -> empty
+Rule 11    empty -> <empty>
+Rule 12    parametro -> tipo_dato ID
+Rule 13    tipo_dato -> INT
+Rule 14    tipo_dato -> CHAR
+Rule 15    tipo_dato -> FLOAT
+Rule 16    declaraciones -> declaracion
+Rule 17    declaraciones -> declaraciones declaracion
+Rule 18    declaracion -> asignacion
+Rule 19    declaracion -> declara
+Rule 20    declaracion -> condicional
+Rule 21    declaracion -> iteracion
+Rule 22    declaracion -> impresion
+Rule 23    declaracion -> entrada
+Rule 24    asignacion -> ID ASIGNAR expresion PUNTOCOMA
+Rule 25    declara -> tipo_dato ID PUNTOCOMA
+Rule 26    declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA
+Rule 27    expresion -> expresion_aritmetica
+Rule 28    expresion -> expresion_logica
+Rule 29    expresion -> expresion_comparacion
+Rule 30    expresion -> ID
+Rule 31    expresion -> constante
+Rule 32    expresion_aritmetica -> expresion SUMA expresion
+Rule 33    expresion_aritmetica -> expresion RESTA expresion
+Rule 34    expresion_aritmetica -> expresion MULTI expresion
+Rule 35    expresion_aritmetica -> expresion DIV expresion
+Rule 36    expresion_logica -> expresion AND expresion
+Rule 37    expresion_logica -> expresion OR expresion
+Rule 38    expresion_comparacion -> expresion IGUAL expresion
+Rule 39    expresion_comparacion -> expresion DISTINTO expresion
+Rule 40    expresion_comparacion -> expresion MAYOR expresion
+Rule 41    expresion_comparacion -> expresion MAYORIGUAL expresion
+Rule 42    expresion_comparacion -> expresion MENOR expresion
+Rule 43    expresion_comparacion -> expresion MENORIGUAL expresion
+Rule 44    condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+Rule 45    condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+Rule 46    asignacion_for -> ID ASIGNAR expresion
+Rule 47    iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+Rule 48    iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+Rule 49    iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+Rule 50    impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA
+Rule 51    impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA
+Rule 52    entrada -> SCANF APAREN ID CPAREN PUNTOCOMA
+Rule 53    constante -> NUMERO
+Rule 54    constante -> CADENA
+
+Terminals, with rules where they appear
+
+ACORCHETE            : 
+ALLAVE               : 4 44 45 45 47 48 49
+AMPERSANT            : 
+AND                  : 36
+APAREN               : 4 44 45 47 48 49 50 51 52
+APOSTROFE            : 
+ASIGNAR              : 24 26 46
+BREAK                : 
+CADENA               : 50 54
+CASE                 : 
+CCORCHETE            : 
+CHAR                 : 14
+CLLAVE               : 4 44 45 45 47 48 49
+COMA                 : 9
+COMENTARIO           : 
+COMILLAS             : 
+COMMENTS             : 
+COMMENTS_C99         : 
+CONST                : 
+CONTINUE             : 
+CPAREN               : 4 44 45 47 48 49 50 51 52
+DISTINTO             : 39
+DIV                  : 35
+DO                   : 48
+DOSPUNTOS            : 
+DPUNTOS_DPUNTOS      : 
+ELSE                 : 45
+FLOAT                : 15
+FOR                  : 49
+FUNCT_FLECHA         : 
+HASHTAG              : 
+ID                   : 4 5 12 24 25 26 30 46 51 52
+IF                   : 44 45
+IGUAL                : 38
+INCREMENTO           : 
+INT                  : 13
+MASMAS               : 
+MAYOR                : 40
+MAYORIGUAL           : 41
+MENOR                : 42
+MENORIGUAL           : 43
+MENOSMENOS           : 
+MULTI                : 34
+NOT                  : 
+NUMERO               : 53
+OR                   : 37
+PRINTF               : 50 51
+PUNTO                : 
+PUNTOCOMA            : 5 6 24 25 26 48 49 49 50 51 52
+RESTA                : 33
+RETURN               : 5 6
+SCANF                : 52
+STRUCT               : 
+SUMA                 : 32
+SWITCH               : 
+TYPEDEF              : 
+WHILE                : 47 48
+XOR                  : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 18
+asignacion_for       : 49 49
+condicional          : 20
+constante            : 31
+declara              : 19
+declaracion          : 16 17
+declaraciones        : 4 17 44 45 45 47 48 49
+empty                : 7 10
+entrada              : 23
+expresion            : 6 24 26 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 45 46 47 48 49
+expresion_aritmetica : 27
+expresion_comparacion : 29
+expresion_logica     : 28
+funcion              : 2 3
+funciones            : 1 3
+impresion            : 22
+iteracion            : 21
+parametro            : 8 9
+parametros           : 4 9
+programa             : 0
+return               : 4
+tipo_dato            : 4 12 25 26
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . funciones
+    (2) funciones -> . funcion
+    (3) funciones -> . funciones funcion
+    (4) funcion -> . tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    programa                       shift and go to state 1
+    funciones                      shift and go to state 2
+    funcion                        shift and go to state 3
+    tipo_dato                      shift and go to state 4
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> funciones .
+    (3) funciones -> funciones . funcion
+    (4) funcion -> . tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    $end            reduce using rule 1 (programa -> funciones .)
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    funcion                        shift and go to state 8
+    tipo_dato                      shift and go to state 4
+
+state 3
+
+    (2) funciones -> funcion .
+
+    INT             reduce using rule 2 (funciones -> funcion .)
+    CHAR            reduce using rule 2 (funciones -> funcion .)
+    FLOAT           reduce using rule 2 (funciones -> funcion .)
+    $end            reduce using rule 2 (funciones -> funcion .)
+
+
+state 4
+
+    (4) funcion -> tipo_dato . ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE
+
+    ID              shift and go to state 9
+
+
+state 5
+
+    (13) tipo_dato -> INT .
+
+    ID              reduce using rule 13 (tipo_dato -> INT .)
+
+
+state 6
+
+    (14) tipo_dato -> CHAR .
+
+    ID              reduce using rule 14 (tipo_dato -> CHAR .)
+
+
+state 7
+
+    (15) tipo_dato -> FLOAT .
+
+    ID              reduce using rule 15 (tipo_dato -> FLOAT .)
+
+
+state 8
+
+    (3) funciones -> funciones funcion .
+
+    INT             reduce using rule 3 (funciones -> funciones funcion .)
+    CHAR            reduce using rule 3 (funciones -> funciones funcion .)
+    FLOAT           reduce using rule 3 (funciones -> funciones funcion .)
+    $end            reduce using rule 3 (funciones -> funciones funcion .)
+
+
+state 9
+
+    (4) funcion -> tipo_dato ID . APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE
+
+    APAREN          shift and go to state 10
+
+
+state 10
+
+    (4) funcion -> tipo_dato ID APAREN . parametros CPAREN ALLAVE declaraciones return CLLAVE
+    (8) parametros -> . parametro
+    (9) parametros -> . parametro COMA parametros
+    (10) parametros -> . empty
+    (12) parametro -> . tipo_dato ID
+    (11) empty -> .
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CPAREN          reduce using rule 11 (empty -> .)
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    tipo_dato                      shift and go to state 11
+    parametros                     shift and go to state 12
+    parametro                      shift and go to state 13
+    empty                          shift and go to state 14
+
+state 11
+
+    (12) parametro -> tipo_dato . ID
+
+    ID              shift and go to state 15
+
+
+state 12
+
+    (4) funcion -> tipo_dato ID APAREN parametros . CPAREN ALLAVE declaraciones return CLLAVE
+
+    CPAREN          shift and go to state 16
+
+
+state 13
+
+    (8) parametros -> parametro .
+    (9) parametros -> parametro . COMA parametros
+
+    CPAREN          reduce using rule 8 (parametros -> parametro .)
+    COMA            shift and go to state 17
+
+
+state 14
+
+    (10) parametros -> empty .
+
+    CPAREN          reduce using rule 10 (parametros -> empty .)
+
+
+state 15
+
+    (12) parametro -> tipo_dato ID .
+
+    COMA            reduce using rule 12 (parametro -> tipo_dato ID .)
+    CPAREN          reduce using rule 12 (parametro -> tipo_dato ID .)
+
+
+state 16
+
+    (4) funcion -> tipo_dato ID APAREN parametros CPAREN . ALLAVE declaraciones return CLLAVE
+
+    ALLAVE          shift and go to state 18
+
+
+state 17
+
+    (9) parametros -> parametro COMA . parametros
+    (8) parametros -> . parametro
+    (9) parametros -> . parametro COMA parametros
+    (10) parametros -> . empty
+    (12) parametro -> . tipo_dato ID
+    (11) empty -> .
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CPAREN          reduce using rule 11 (empty -> .)
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    parametro                      shift and go to state 13
+    parametros                     shift and go to state 19
+    empty                          shift and go to state 14
+    tipo_dato                      shift and go to state 11
+
+state 18
+
+    (4) funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE . declaraciones return CLLAVE
+    (16) declaraciones -> . declaracion
+    (17) declaraciones -> . declaraciones declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    tipo_dato                      shift and go to state 20
+    declaraciones                  shift and go to state 22
+    declaracion                    shift and go to state 23
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+
+state 19
+
+    (9) parametros -> parametro COMA parametros .
+
+    CPAREN          reduce using rule 9 (parametros -> parametro COMA parametros .)
+
+
+state 20
+
+    (25) declara -> tipo_dato . ID PUNTOCOMA
+    (26) declara -> tipo_dato . ID ASIGNAR expresion PUNTOCOMA
+
+    ID              shift and go to state 36
+
+
+state 21
+
+    (24) asignacion -> ID . ASIGNAR expresion PUNTOCOMA
+
+    ASIGNAR         shift and go to state 37
+
+
+state 22
+
+    (4) funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones . return CLLAVE
+    (17) declaraciones -> declaraciones . declaracion
+    (5) return -> . RETURN ID PUNTOCOMA
+    (6) return -> . RETURN expresion PUNTOCOMA
+    (7) return -> . empty
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (11) empty -> .
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    RETURN          shift and go to state 40
+    CLLAVE          reduce using rule 11 (empty -> .)
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    tipo_dato                      shift and go to state 20
+    return                         shift and go to state 38
+    declaracion                    shift and go to state 39
+    empty                          shift and go to state 41
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+
+state 23
+
+    (16) declaraciones -> declaracion .
+
+    RETURN          reduce using rule 16 (declaraciones -> declaracion .)
+    ID              reduce using rule 16 (declaraciones -> declaracion .)
+    IF              reduce using rule 16 (declaraciones -> declaracion .)
+    WHILE           reduce using rule 16 (declaraciones -> declaracion .)
+    DO              reduce using rule 16 (declaraciones -> declaracion .)
+    FOR             reduce using rule 16 (declaraciones -> declaracion .)
+    PRINTF          reduce using rule 16 (declaraciones -> declaracion .)
+    SCANF           reduce using rule 16 (declaraciones -> declaracion .)
+    INT             reduce using rule 16 (declaraciones -> declaracion .)
+    CHAR            reduce using rule 16 (declaraciones -> declaracion .)
+    FLOAT           reduce using rule 16 (declaraciones -> declaracion .)
+    CLLAVE          reduce using rule 16 (declaraciones -> declaracion .)
+
+
+state 24
+
+    (18) declaracion -> asignacion .
+
+    RETURN          reduce using rule 18 (declaracion -> asignacion .)
+    ID              reduce using rule 18 (declaracion -> asignacion .)
+    IF              reduce using rule 18 (declaracion -> asignacion .)
+    WHILE           reduce using rule 18 (declaracion -> asignacion .)
+    DO              reduce using rule 18 (declaracion -> asignacion .)
+    FOR             reduce using rule 18 (declaracion -> asignacion .)
+    PRINTF          reduce using rule 18 (declaracion -> asignacion .)
+    SCANF           reduce using rule 18 (declaracion -> asignacion .)
+    INT             reduce using rule 18 (declaracion -> asignacion .)
+    CHAR            reduce using rule 18 (declaracion -> asignacion .)
+    FLOAT           reduce using rule 18 (declaracion -> asignacion .)
+    CLLAVE          reduce using rule 18 (declaracion -> asignacion .)
+
+
+state 25
+
+    (19) declaracion -> declara .
+
+    RETURN          reduce using rule 19 (declaracion -> declara .)
+    ID              reduce using rule 19 (declaracion -> declara .)
+    IF              reduce using rule 19 (declaracion -> declara .)
+    WHILE           reduce using rule 19 (declaracion -> declara .)
+    DO              reduce using rule 19 (declaracion -> declara .)
+    FOR             reduce using rule 19 (declaracion -> declara .)
+    PRINTF          reduce using rule 19 (declaracion -> declara .)
+    SCANF           reduce using rule 19 (declaracion -> declara .)
+    INT             reduce using rule 19 (declaracion -> declara .)
+    CHAR            reduce using rule 19 (declaracion -> declara .)
+    FLOAT           reduce using rule 19 (declaracion -> declara .)
+    CLLAVE          reduce using rule 19 (declaracion -> declara .)
+
+
+state 26
+
+    (20) declaracion -> condicional .
+
+    RETURN          reduce using rule 20 (declaracion -> condicional .)
+    ID              reduce using rule 20 (declaracion -> condicional .)
+    IF              reduce using rule 20 (declaracion -> condicional .)
+    WHILE           reduce using rule 20 (declaracion -> condicional .)
+    DO              reduce using rule 20 (declaracion -> condicional .)
+    FOR             reduce using rule 20 (declaracion -> condicional .)
+    PRINTF          reduce using rule 20 (declaracion -> condicional .)
+    SCANF           reduce using rule 20 (declaracion -> condicional .)
+    INT             reduce using rule 20 (declaracion -> condicional .)
+    CHAR            reduce using rule 20 (declaracion -> condicional .)
+    FLOAT           reduce using rule 20 (declaracion -> condicional .)
+    CLLAVE          reduce using rule 20 (declaracion -> condicional .)
+
+
+state 27
+
+    (21) declaracion -> iteracion .
+
+    RETURN          reduce using rule 21 (declaracion -> iteracion .)
+    ID              reduce using rule 21 (declaracion -> iteracion .)
+    IF              reduce using rule 21 (declaracion -> iteracion .)
+    WHILE           reduce using rule 21 (declaracion -> iteracion .)
+    DO              reduce using rule 21 (declaracion -> iteracion .)
+    FOR             reduce using rule 21 (declaracion -> iteracion .)
+    PRINTF          reduce using rule 21 (declaracion -> iteracion .)
+    SCANF           reduce using rule 21 (declaracion -> iteracion .)
+    INT             reduce using rule 21 (declaracion -> iteracion .)
+    CHAR            reduce using rule 21 (declaracion -> iteracion .)
+    FLOAT           reduce using rule 21 (declaracion -> iteracion .)
+    CLLAVE          reduce using rule 21 (declaracion -> iteracion .)
+
+
+state 28
+
+    (22) declaracion -> impresion .
+
+    RETURN          reduce using rule 22 (declaracion -> impresion .)
+    ID              reduce using rule 22 (declaracion -> impresion .)
+    IF              reduce using rule 22 (declaracion -> impresion .)
+    WHILE           reduce using rule 22 (declaracion -> impresion .)
+    DO              reduce using rule 22 (declaracion -> impresion .)
+    FOR             reduce using rule 22 (declaracion -> impresion .)
+    PRINTF          reduce using rule 22 (declaracion -> impresion .)
+    SCANF           reduce using rule 22 (declaracion -> impresion .)
+    INT             reduce using rule 22 (declaracion -> impresion .)
+    CHAR            reduce using rule 22 (declaracion -> impresion .)
+    FLOAT           reduce using rule 22 (declaracion -> impresion .)
+    CLLAVE          reduce using rule 22 (declaracion -> impresion .)
+
+
+state 29
+
+    (23) declaracion -> entrada .
+
+    RETURN          reduce using rule 23 (declaracion -> entrada .)
+    ID              reduce using rule 23 (declaracion -> entrada .)
+    IF              reduce using rule 23 (declaracion -> entrada .)
+    WHILE           reduce using rule 23 (declaracion -> entrada .)
+    DO              reduce using rule 23 (declaracion -> entrada .)
+    FOR             reduce using rule 23 (declaracion -> entrada .)
+    PRINTF          reduce using rule 23 (declaracion -> entrada .)
+    SCANF           reduce using rule 23 (declaracion -> entrada .)
+    INT             reduce using rule 23 (declaracion -> entrada .)
+    CHAR            reduce using rule 23 (declaracion -> entrada .)
+    FLOAT           reduce using rule 23 (declaracion -> entrada .)
+    CLLAVE          reduce using rule 23 (declaracion -> entrada .)
+
+
+state 30
+
+    (44) condicional -> IF . APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> IF . APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+
+    APAREN          shift and go to state 42
+
+
+state 31
+
+    (47) iteracion -> WHILE . APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+
+    APAREN          shift and go to state 43
+
+
+state 32
+
+    (48) iteracion -> DO . ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+
+    ALLAVE          shift and go to state 44
+
+
+state 33
+
+    (49) iteracion -> FOR . APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+
+    APAREN          shift and go to state 45
+
+
+state 34
+
+    (50) impresion -> PRINTF . APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> PRINTF . APAREN ID CPAREN PUNTOCOMA
+
+    APAREN          shift and go to state 46
+
+
+state 35
+
+    (52) entrada -> SCANF . APAREN ID CPAREN PUNTOCOMA
+
+    APAREN          shift and go to state 47
+
+
+state 36
+
+    (25) declara -> tipo_dato ID . PUNTOCOMA
+    (26) declara -> tipo_dato ID . ASIGNAR expresion PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 48
+    ASIGNAR         shift and go to state 49
+
+
+state 37
+
+    (24) asignacion -> ID ASIGNAR . expresion PUNTOCOMA
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 51
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 38
+
+    (4) funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return . CLLAVE
+
+    CLLAVE          shift and go to state 58
+
+
+state 39
+
+    (17) declaraciones -> declaraciones declaracion .
+
+    RETURN          reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    ID              reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    IF              reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    WHILE           reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    DO              reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    FOR             reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    PRINTF          reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    SCANF           reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    INT             reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    CHAR            reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    FLOAT           reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+    CLLAVE          reduce using rule 17 (declaraciones -> declaraciones declaracion .)
+
+
+state 40
+
+    (5) return -> RETURN . ID PUNTOCOMA
+    (6) return -> RETURN . expresion PUNTOCOMA
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 59
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 60
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 41
+
+    (7) return -> empty .
+
+    CLLAVE          reduce using rule 7 (return -> empty .)
+
+
+state 42
+
+    (44) condicional -> IF APAREN . expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> IF APAREN . expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 61
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 43
+
+    (47) iteracion -> WHILE APAREN . expresion CPAREN ALLAVE declaraciones CLLAVE
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 62
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 44
+
+    (48) iteracion -> DO ALLAVE . declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (16) declaraciones -> . declaracion
+    (17) declaraciones -> . declaraciones declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaraciones                  shift and go to state 63
+    declaracion                    shift and go to state 23
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 45
+
+    (49) iteracion -> FOR APAREN . asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (46) asignacion_for -> . ID ASIGNAR expresion
+
+    ID              shift and go to state 65
+
+    asignacion_for                 shift and go to state 64
+
+state 46
+
+    (50) impresion -> PRINTF APAREN . CADENA CPAREN PUNTOCOMA
+    (51) impresion -> PRINTF APAREN . ID CPAREN PUNTOCOMA
+
+    CADENA          shift and go to state 66
+    ID              shift and go to state 67
+
+
+state 47
+
+    (52) entrada -> SCANF APAREN . ID CPAREN PUNTOCOMA
+
+    ID              shift and go to state 68
+
+
+state 48
+
+    (25) declara -> tipo_dato ID PUNTOCOMA .
+
+    RETURN          reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    ID              reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    IF              reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    WHILE           reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    DO              reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    FOR             reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    PRINTF          reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    SCANF           reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    INT             reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    CHAR            reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    FLOAT           reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+    CLLAVE          reduce using rule 25 (declara -> tipo_dato ID PUNTOCOMA .)
+
+
+state 49
+
+    (26) declara -> tipo_dato ID ASIGNAR . expresion PUNTOCOMA
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 69
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 50
+
+    (30) expresion -> ID .
+
+    PUNTOCOMA       reduce using rule 30 (expresion -> ID .)
+    SUMA            reduce using rule 30 (expresion -> ID .)
+    RESTA           reduce using rule 30 (expresion -> ID .)
+    MULTI           reduce using rule 30 (expresion -> ID .)
+    DIV             reduce using rule 30 (expresion -> ID .)
+    AND             reduce using rule 30 (expresion -> ID .)
+    OR              reduce using rule 30 (expresion -> ID .)
+    IGUAL           reduce using rule 30 (expresion -> ID .)
+    DISTINTO        reduce using rule 30 (expresion -> ID .)
+    MAYOR           reduce using rule 30 (expresion -> ID .)
+    MAYORIGUAL      reduce using rule 30 (expresion -> ID .)
+    MENOR           reduce using rule 30 (expresion -> ID .)
+    MENORIGUAL      reduce using rule 30 (expresion -> ID .)
+    CPAREN          reduce using rule 30 (expresion -> ID .)
+
+
+state 51
+
+    (24) asignacion -> ID ASIGNAR expresion . PUNTOCOMA
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    PUNTOCOMA       shift and go to state 70
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 52
+
+    (27) expresion -> expresion_aritmetica .
+
+    PUNTOCOMA       reduce using rule 27 (expresion -> expresion_aritmetica .)
+    SUMA            reduce using rule 27 (expresion -> expresion_aritmetica .)
+    RESTA           reduce using rule 27 (expresion -> expresion_aritmetica .)
+    MULTI           reduce using rule 27 (expresion -> expresion_aritmetica .)
+    DIV             reduce using rule 27 (expresion -> expresion_aritmetica .)
+    AND             reduce using rule 27 (expresion -> expresion_aritmetica .)
+    OR              reduce using rule 27 (expresion -> expresion_aritmetica .)
+    IGUAL           reduce using rule 27 (expresion -> expresion_aritmetica .)
+    DISTINTO        reduce using rule 27 (expresion -> expresion_aritmetica .)
+    MAYOR           reduce using rule 27 (expresion -> expresion_aritmetica .)
+    MAYORIGUAL      reduce using rule 27 (expresion -> expresion_aritmetica .)
+    MENOR           reduce using rule 27 (expresion -> expresion_aritmetica .)
+    MENORIGUAL      reduce using rule 27 (expresion -> expresion_aritmetica .)
+    CPAREN          reduce using rule 27 (expresion -> expresion_aritmetica .)
+
+
+state 53
+
+    (28) expresion -> expresion_logica .
+
+    PUNTOCOMA       reduce using rule 28 (expresion -> expresion_logica .)
+    SUMA            reduce using rule 28 (expresion -> expresion_logica .)
+    RESTA           reduce using rule 28 (expresion -> expresion_logica .)
+    MULTI           reduce using rule 28 (expresion -> expresion_logica .)
+    DIV             reduce using rule 28 (expresion -> expresion_logica .)
+    AND             reduce using rule 28 (expresion -> expresion_logica .)
+    OR              reduce using rule 28 (expresion -> expresion_logica .)
+    IGUAL           reduce using rule 28 (expresion -> expresion_logica .)
+    DISTINTO        reduce using rule 28 (expresion -> expresion_logica .)
+    MAYOR           reduce using rule 28 (expresion -> expresion_logica .)
+    MAYORIGUAL      reduce using rule 28 (expresion -> expresion_logica .)
+    MENOR           reduce using rule 28 (expresion -> expresion_logica .)
+    MENORIGUAL      reduce using rule 28 (expresion -> expresion_logica .)
+    CPAREN          reduce using rule 28 (expresion -> expresion_logica .)
+
+
+state 54
+
+    (29) expresion -> expresion_comparacion .
+
+    PUNTOCOMA       reduce using rule 29 (expresion -> expresion_comparacion .)
+    SUMA            reduce using rule 29 (expresion -> expresion_comparacion .)
+    RESTA           reduce using rule 29 (expresion -> expresion_comparacion .)
+    MULTI           reduce using rule 29 (expresion -> expresion_comparacion .)
+    DIV             reduce using rule 29 (expresion -> expresion_comparacion .)
+    AND             reduce using rule 29 (expresion -> expresion_comparacion .)
+    OR              reduce using rule 29 (expresion -> expresion_comparacion .)
+    IGUAL           reduce using rule 29 (expresion -> expresion_comparacion .)
+    DISTINTO        reduce using rule 29 (expresion -> expresion_comparacion .)
+    MAYOR           reduce using rule 29 (expresion -> expresion_comparacion .)
+    MAYORIGUAL      reduce using rule 29 (expresion -> expresion_comparacion .)
+    MENOR           reduce using rule 29 (expresion -> expresion_comparacion .)
+    MENORIGUAL      reduce using rule 29 (expresion -> expresion_comparacion .)
+    CPAREN          reduce using rule 29 (expresion -> expresion_comparacion .)
+
+
+state 55
+
+    (31) expresion -> constante .
+
+    PUNTOCOMA       reduce using rule 31 (expresion -> constante .)
+    SUMA            reduce using rule 31 (expresion -> constante .)
+    RESTA           reduce using rule 31 (expresion -> constante .)
+    MULTI           reduce using rule 31 (expresion -> constante .)
+    DIV             reduce using rule 31 (expresion -> constante .)
+    AND             reduce using rule 31 (expresion -> constante .)
+    OR              reduce using rule 31 (expresion -> constante .)
+    IGUAL           reduce using rule 31 (expresion -> constante .)
+    DISTINTO        reduce using rule 31 (expresion -> constante .)
+    MAYOR           reduce using rule 31 (expresion -> constante .)
+    MAYORIGUAL      reduce using rule 31 (expresion -> constante .)
+    MENOR           reduce using rule 31 (expresion -> constante .)
+    MENORIGUAL      reduce using rule 31 (expresion -> constante .)
+    CPAREN          reduce using rule 31 (expresion -> constante .)
+
+
+state 56
+
+    (53) constante -> NUMERO .
+
+    PUNTOCOMA       reduce using rule 53 (constante -> NUMERO .)
+    SUMA            reduce using rule 53 (constante -> NUMERO .)
+    RESTA           reduce using rule 53 (constante -> NUMERO .)
+    MULTI           reduce using rule 53 (constante -> NUMERO .)
+    DIV             reduce using rule 53 (constante -> NUMERO .)
+    AND             reduce using rule 53 (constante -> NUMERO .)
+    OR              reduce using rule 53 (constante -> NUMERO .)
+    IGUAL           reduce using rule 53 (constante -> NUMERO .)
+    DISTINTO        reduce using rule 53 (constante -> NUMERO .)
+    MAYOR           reduce using rule 53 (constante -> NUMERO .)
+    MAYORIGUAL      reduce using rule 53 (constante -> NUMERO .)
+    MENOR           reduce using rule 53 (constante -> NUMERO .)
+    MENORIGUAL      reduce using rule 53 (constante -> NUMERO .)
+    CPAREN          reduce using rule 53 (constante -> NUMERO .)
+
+
+state 57
+
+    (54) constante -> CADENA .
+
+    PUNTOCOMA       reduce using rule 54 (constante -> CADENA .)
+    SUMA            reduce using rule 54 (constante -> CADENA .)
+    RESTA           reduce using rule 54 (constante -> CADENA .)
+    MULTI           reduce using rule 54 (constante -> CADENA .)
+    DIV             reduce using rule 54 (constante -> CADENA .)
+    AND             reduce using rule 54 (constante -> CADENA .)
+    OR              reduce using rule 54 (constante -> CADENA .)
+    IGUAL           reduce using rule 54 (constante -> CADENA .)
+    DISTINTO        reduce using rule 54 (constante -> CADENA .)
+    MAYOR           reduce using rule 54 (constante -> CADENA .)
+    MAYORIGUAL      reduce using rule 54 (constante -> CADENA .)
+    MENOR           reduce using rule 54 (constante -> CADENA .)
+    MENORIGUAL      reduce using rule 54 (constante -> CADENA .)
+    CPAREN          reduce using rule 54 (constante -> CADENA .)
+
+
+state 58
+
+    (4) funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE .
+
+    INT             reduce using rule 4 (funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE .)
+    CHAR            reduce using rule 4 (funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE .)
+    FLOAT           reduce using rule 4 (funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE .)
+    $end            reduce using rule 4 (funcion -> tipo_dato ID APAREN parametros CPAREN ALLAVE declaraciones return CLLAVE .)
+
+
+state 59
+
+    (5) return -> RETURN ID . PUNTOCOMA
+    (30) expresion -> ID .
+
+  ! shift/reduce conflict for PUNTOCOMA resolved as shift
+    PUNTOCOMA       shift and go to state 83
+    SUMA            reduce using rule 30 (expresion -> ID .)
+    RESTA           reduce using rule 30 (expresion -> ID .)
+    MULTI           reduce using rule 30 (expresion -> ID .)
+    DIV             reduce using rule 30 (expresion -> ID .)
+    AND             reduce using rule 30 (expresion -> ID .)
+    OR              reduce using rule 30 (expresion -> ID .)
+    IGUAL           reduce using rule 30 (expresion -> ID .)
+    DISTINTO        reduce using rule 30 (expresion -> ID .)
+    MAYOR           reduce using rule 30 (expresion -> ID .)
+    MAYORIGUAL      reduce using rule 30 (expresion -> ID .)
+    MENOR           reduce using rule 30 (expresion -> ID .)
+    MENORIGUAL      reduce using rule 30 (expresion -> ID .)
+
+  ! PUNTOCOMA       [ reduce using rule 30 (expresion -> ID .) ]
+
+
+state 60
+
+    (6) return -> RETURN expresion . PUNTOCOMA
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    PUNTOCOMA       shift and go to state 84
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 61
+
+    (44) condicional -> IF APAREN expresion . CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> IF APAREN expresion . CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    CPAREN          shift and go to state 85
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 62
+
+    (47) iteracion -> WHILE APAREN expresion . CPAREN ALLAVE declaraciones CLLAVE
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    CPAREN          shift and go to state 86
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 63
+
+    (48) iteracion -> DO ALLAVE declaraciones . CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (17) declaraciones -> declaraciones . declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CLLAVE          shift and go to state 87
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaracion                    shift and go to state 39
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 64
+
+    (49) iteracion -> FOR APAREN asignacion_for . PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+
+    PUNTOCOMA       shift and go to state 88
+
+
+state 65
+
+    (46) asignacion_for -> ID . ASIGNAR expresion
+
+    ASIGNAR         shift and go to state 89
+
+
+state 66
+
+    (50) impresion -> PRINTF APAREN CADENA . CPAREN PUNTOCOMA
+
+    CPAREN          shift and go to state 90
+
+
+state 67
+
+    (51) impresion -> PRINTF APAREN ID . CPAREN PUNTOCOMA
+
+    CPAREN          shift and go to state 91
+
+
+state 68
+
+    (52) entrada -> SCANF APAREN ID . CPAREN PUNTOCOMA
+
+    CPAREN          shift and go to state 92
+
+
+state 69
+
+    (26) declara -> tipo_dato ID ASIGNAR expresion . PUNTOCOMA
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    PUNTOCOMA       shift and go to state 93
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 70
+
+    (24) asignacion -> ID ASIGNAR expresion PUNTOCOMA .
+
+    RETURN          reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    ID              reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    IF              reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    WHILE           reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    DO              reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    FOR             reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    PRINTF          reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    SCANF           reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    INT             reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    CHAR            reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    FLOAT           reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+    CLLAVE          reduce using rule 24 (asignacion -> ID ASIGNAR expresion PUNTOCOMA .)
+
+
+state 71
+
+    (32) expresion_aritmetica -> expresion SUMA . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 94
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 72
+
+    (33) expresion_aritmetica -> expresion RESTA . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 95
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 73
+
+    (34) expresion_aritmetica -> expresion MULTI . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 96
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 74
+
+    (35) expresion_aritmetica -> expresion DIV . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 97
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 75
+
+    (36) expresion_logica -> expresion AND . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 98
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 76
+
+    (37) expresion_logica -> expresion OR . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 99
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 77
+
+    (38) expresion_comparacion -> expresion IGUAL . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 100
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 78
+
+    (39) expresion_comparacion -> expresion DISTINTO . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 101
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 79
+
+    (40) expresion_comparacion -> expresion MAYOR . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 102
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 80
+
+    (41) expresion_comparacion -> expresion MAYORIGUAL . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 103
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 81
+
+    (42) expresion_comparacion -> expresion MENOR . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 104
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 82
+
+    (43) expresion_comparacion -> expresion MENORIGUAL . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 105
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 83
+
+    (5) return -> RETURN ID PUNTOCOMA .
+
+    CLLAVE          reduce using rule 5 (return -> RETURN ID PUNTOCOMA .)
+
+
+state 84
+
+    (6) return -> RETURN expresion PUNTOCOMA .
+
+    CLLAVE          reduce using rule 6 (return -> RETURN expresion PUNTOCOMA .)
+
+
+state 85
+
+    (44) condicional -> IF APAREN expresion CPAREN . ALLAVE declaraciones CLLAVE
+    (45) condicional -> IF APAREN expresion CPAREN . ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+
+    ALLAVE          shift and go to state 106
+
+
+state 86
+
+    (47) iteracion -> WHILE APAREN expresion CPAREN . ALLAVE declaraciones CLLAVE
+
+    ALLAVE          shift and go to state 107
+
+
+state 87
+
+    (48) iteracion -> DO ALLAVE declaraciones CLLAVE . WHILE APAREN expresion CPAREN PUNTOCOMA
+
+    WHILE           shift and go to state 108
+
+
+state 88
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA . expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 109
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 89
+
+    (46) asignacion_for -> ID ASIGNAR . expresion
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 110
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 90
+
+    (50) impresion -> PRINTF APAREN CADENA CPAREN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 111
+
+
+state 91
+
+    (51) impresion -> PRINTF APAREN ID CPAREN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 112
+
+
+state 92
+
+    (52) entrada -> SCANF APAREN ID CPAREN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 113
+
+
+state 93
+
+    (26) declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .
+
+    RETURN          reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    ID              reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    IF              reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    WHILE           reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    DO              reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    FOR             reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    PRINTF          reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    SCANF           reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    INT             reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    CHAR            reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    FLOAT           reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+    CLLAVE          reduce using rule 26 (declara -> tipo_dato ID ASIGNAR expresion PUNTOCOMA .)
+
+
+state 94
+
+    (32) expresion_aritmetica -> expresion SUMA expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .)
+    CPAREN          reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! RESTA           [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! MULTI           [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! DIV             [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! AND             [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! OR              [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! IGUAL           [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! DISTINTO        [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! MAYOR           [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! MENOR           [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 32 (expresion_aritmetica -> expresion SUMA expresion .) ]
+
+
+state 95
+
+    (33) expresion_aritmetica -> expresion RESTA expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .)
+    CPAREN          reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! RESTA           [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! MULTI           [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! DIV             [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! AND             [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! OR              [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! IGUAL           [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! DISTINTO        [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! MAYOR           [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! MENOR           [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 33 (expresion_aritmetica -> expresion RESTA expresion .) ]
+
+
+state 96
+
+    (34) expresion_aritmetica -> expresion MULTI expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .)
+    CPAREN          reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! RESTA           [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! MULTI           [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! DIV             [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! AND             [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! OR              [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! IGUAL           [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! DISTINTO        [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! MAYOR           [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! MENOR           [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 34 (expresion_aritmetica -> expresion MULTI expresion .) ]
+
+
+state 97
+
+    (35) expresion_aritmetica -> expresion DIV expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .)
+    CPAREN          reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! RESTA           [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! MULTI           [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! DIV             [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! AND             [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! OR              [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! IGUAL           [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! DISTINTO        [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! MAYOR           [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! MENOR           [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 35 (expresion_aritmetica -> expresion DIV expresion .) ]
+
+
+state 98
+
+    (36) expresion_logica -> expresion AND expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 36 (expresion_logica -> expresion AND expresion .)
+    CPAREN          reduce using rule 36 (expresion_logica -> expresion AND expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! RESTA           [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! MULTI           [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! DIV             [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! AND             [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! OR              [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! IGUAL           [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! DISTINTO        [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! MAYOR           [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! MENOR           [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 36 (expresion_logica -> expresion AND expresion .) ]
+
+
+state 99
+
+    (37) expresion_logica -> expresion OR expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 37 (expresion_logica -> expresion OR expresion .)
+    CPAREN          reduce using rule 37 (expresion_logica -> expresion OR expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! RESTA           [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! MULTI           [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! DIV             [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! AND             [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! OR              [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! IGUAL           [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! DISTINTO        [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! MAYOR           [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! MENOR           [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 37 (expresion_logica -> expresion OR expresion .) ]
+
+
+state 100
+
+    (38) expresion_comparacion -> expresion IGUAL expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .)
+    CPAREN          reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! RESTA           [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! MULTI           [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! DIV             [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! AND             [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! OR              [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! IGUAL           [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! DISTINTO        [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! MAYOR           [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! MENOR           [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 38 (expresion_comparacion -> expresion IGUAL expresion .) ]
+
+
+state 101
+
+    (39) expresion_comparacion -> expresion DISTINTO expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .)
+    CPAREN          reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! RESTA           [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! MULTI           [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! DIV             [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! AND             [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! OR              [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! IGUAL           [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! DISTINTO        [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! MAYOR           [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! MENOR           [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 39 (expresion_comparacion -> expresion DISTINTO expresion .) ]
+
+
+state 102
+
+    (40) expresion_comparacion -> expresion MAYOR expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .)
+    CPAREN          reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! RESTA           [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! MULTI           [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! DIV             [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! AND             [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! OR              [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! IGUAL           [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! DISTINTO        [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! MAYOR           [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! MENOR           [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 40 (expresion_comparacion -> expresion MAYOR expresion .) ]
+
+
+state 103
+
+    (41) expresion_comparacion -> expresion MAYORIGUAL expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .)
+    CPAREN          reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! RESTA           [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! MULTI           [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! AND             [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! OR              [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! IGUAL           [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! DISTINTO        [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! MAYOR           [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! MENOR           [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 41 (expresion_comparacion -> expresion MAYORIGUAL expresion .) ]
+
+
+state 104
+
+    (42) expresion_comparacion -> expresion MENOR expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .)
+    CPAREN          reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! RESTA           [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! MULTI           [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! DIV             [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! AND             [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! OR              [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! IGUAL           [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! DISTINTO        [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! MAYOR           [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! MENOR           [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 42 (expresion_comparacion -> expresion MENOR expresion .) ]
+
+
+state 105
+
+    (43) expresion_comparacion -> expresion MENORIGUAL expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+  ! shift/reduce conflict for SUMA resolved as shift
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for MULTI resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DISTINTO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MAYORIGUAL resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MENORIGUAL resolved as shift
+    PUNTOCOMA       reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .)
+    CPAREN          reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+  ! SUMA            [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! RESTA           [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! MULTI           [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! AND             [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! OR              [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! IGUAL           [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! DISTINTO        [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! MAYOR           [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! MENOR           [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 43 (expresion_comparacion -> expresion MENORIGUAL expresion .) ]
+
+
+state 106
+
+    (44) condicional -> IF APAREN expresion CPAREN ALLAVE . declaraciones CLLAVE
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE . declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (16) declaraciones -> . declaracion
+    (17) declaraciones -> . declaraciones declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaraciones                  shift and go to state 114
+    declaracion                    shift and go to state 23
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 107
+
+    (47) iteracion -> WHILE APAREN expresion CPAREN ALLAVE . declaraciones CLLAVE
+    (16) declaraciones -> . declaracion
+    (17) declaraciones -> . declaraciones declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaraciones                  shift and go to state 115
+    declaracion                    shift and go to state 23
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 108
+
+    (48) iteracion -> DO ALLAVE declaraciones CLLAVE WHILE . APAREN expresion CPAREN PUNTOCOMA
+
+    APAREN          shift and go to state 116
+
+
+state 109
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion . PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    PUNTOCOMA       shift and go to state 117
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 110
+
+    (46) asignacion_for -> ID ASIGNAR expresion .
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    PUNTOCOMA       reduce using rule 46 (asignacion_for -> ID ASIGNAR expresion .)
+    CPAREN          reduce using rule 46 (asignacion_for -> ID ASIGNAR expresion .)
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 111
+
+    (50) impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .
+
+    RETURN          reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    ID              reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    IF              reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    WHILE           reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    DO              reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    FOR             reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    PRINTF          reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    SCANF           reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    INT             reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    CHAR            reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    FLOAT           reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+    CLLAVE          reduce using rule 50 (impresion -> PRINTF APAREN CADENA CPAREN PUNTOCOMA .)
+
+
+state 112
+
+    (51) impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .
+
+    RETURN          reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    ID              reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    IF              reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    WHILE           reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    DO              reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    FOR             reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    PRINTF          reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    SCANF           reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    INT             reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    CHAR            reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    FLOAT           reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+    CLLAVE          reduce using rule 51 (impresion -> PRINTF APAREN ID CPAREN PUNTOCOMA .)
+
+
+state 113
+
+    (52) entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .
+
+    RETURN          reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    ID              reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    IF              reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    WHILE           reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    DO              reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    FOR             reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    PRINTF          reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    SCANF           reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    INT             reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    CHAR            reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    FLOAT           reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+    CLLAVE          reduce using rule 52 (entrada -> SCANF APAREN ID CPAREN PUNTOCOMA .)
+
+
+state 114
+
+    (44) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones . CLLAVE
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones . CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (17) declaraciones -> declaraciones . declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CLLAVE          shift and go to state 118
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaracion                    shift and go to state 39
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 115
+
+    (47) iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones . CLLAVE
+    (17) declaraciones -> declaraciones . declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CLLAVE          shift and go to state 119
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaracion                    shift and go to state 39
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 116
+
+    (48) iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN . expresion CPAREN PUNTOCOMA
+    (27) expresion -> . expresion_aritmetica
+    (28) expresion -> . expresion_logica
+    (29) expresion -> . expresion_comparacion
+    (30) expresion -> . ID
+    (31) expresion -> . constante
+    (32) expresion_aritmetica -> . expresion SUMA expresion
+    (33) expresion_aritmetica -> . expresion RESTA expresion
+    (34) expresion_aritmetica -> . expresion MULTI expresion
+    (35) expresion_aritmetica -> . expresion DIV expresion
+    (36) expresion_logica -> . expresion AND expresion
+    (37) expresion_logica -> . expresion OR expresion
+    (38) expresion_comparacion -> . expresion IGUAL expresion
+    (39) expresion_comparacion -> . expresion DISTINTO expresion
+    (40) expresion_comparacion -> . expresion MAYOR expresion
+    (41) expresion_comparacion -> . expresion MAYORIGUAL expresion
+    (42) expresion_comparacion -> . expresion MENOR expresion
+    (43) expresion_comparacion -> . expresion MENORIGUAL expresion
+    (53) constante -> . NUMERO
+    (54) constante -> . CADENA
+
+    ID              shift and go to state 50
+    NUMERO          shift and go to state 56
+    CADENA          shift and go to state 57
+
+    expresion                      shift and go to state 120
+    expresion_aritmetica           shift and go to state 52
+    expresion_logica               shift and go to state 53
+    expresion_comparacion          shift and go to state 54
+    constante                      shift and go to state 55
+
+state 117
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA . asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (46) asignacion_for -> . ID ASIGNAR expresion
+
+    ID              shift and go to state 65
+
+    asignacion_for                 shift and go to state 121
+
+state 118
+
+    (44) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE . ELSE ALLAVE declaraciones CLLAVE
+
+    RETURN          reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    ID              reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    IF              reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    WHILE           reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    DO              reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    FOR             reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    PRINTF          reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    SCANF           reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    INT             reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    CHAR            reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    FLOAT           reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    CLLAVE          reduce using rule 44 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    ELSE            shift and go to state 122
+
+
+state 119
+
+    (47) iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .
+
+    RETURN          reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    ID              reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    IF              reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    WHILE           reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    DO              reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    FOR             reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    PRINTF          reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    SCANF           reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    INT             reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    CHAR            reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    FLOAT           reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+    CLLAVE          reduce using rule 47 (iteracion -> WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE .)
+
+
+state 120
+
+    (48) iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion . CPAREN PUNTOCOMA
+    (32) expresion_aritmetica -> expresion . SUMA expresion
+    (33) expresion_aritmetica -> expresion . RESTA expresion
+    (34) expresion_aritmetica -> expresion . MULTI expresion
+    (35) expresion_aritmetica -> expresion . DIV expresion
+    (36) expresion_logica -> expresion . AND expresion
+    (37) expresion_logica -> expresion . OR expresion
+    (38) expresion_comparacion -> expresion . IGUAL expresion
+    (39) expresion_comparacion -> expresion . DISTINTO expresion
+    (40) expresion_comparacion -> expresion . MAYOR expresion
+    (41) expresion_comparacion -> expresion . MAYORIGUAL expresion
+    (42) expresion_comparacion -> expresion . MENOR expresion
+    (43) expresion_comparacion -> expresion . MENORIGUAL expresion
+
+    CPAREN          shift and go to state 123
+    SUMA            shift and go to state 71
+    RESTA           shift and go to state 72
+    MULTI           shift and go to state 73
+    DIV             shift and go to state 74
+    AND             shift and go to state 75
+    OR              shift and go to state 76
+    IGUAL           shift and go to state 77
+    DISTINTO        shift and go to state 78
+    MAYOR           shift and go to state 79
+    MAYORIGUAL      shift and go to state 80
+    MENOR           shift and go to state 81
+    MENORIGUAL      shift and go to state 82
+
+
+state 121
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for . CPAREN ALLAVE declaraciones CLLAVE
+
+    CPAREN          shift and go to state 124
+
+
+state 122
+
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE . ALLAVE declaraciones CLLAVE
+
+    ALLAVE          shift and go to state 125
+
+
+state 123
+
+    (48) iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 126
+
+
+state 124
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN . ALLAVE declaraciones CLLAVE
+
+    ALLAVE          shift and go to state 127
+
+
+state 125
+
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE . declaraciones CLLAVE
+    (16) declaraciones -> . declaracion
+    (17) declaraciones -> . declaraciones declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaraciones                  shift and go to state 128
+    declaracion                    shift and go to state 23
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 126
+
+    (48) iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .
+
+    RETURN          reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    ID              reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    IF              reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    WHILE           reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    DO              reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    FOR             reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    PRINTF          reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    SCANF           reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    INT             reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    CHAR            reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    FLOAT           reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+    CLLAVE          reduce using rule 48 (iteracion -> DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA .)
+
+
+state 127
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE . declaraciones CLLAVE
+    (16) declaraciones -> . declaracion
+    (17) declaraciones -> . declaraciones declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaraciones                  shift and go to state 129
+    declaracion                    shift and go to state 23
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 128
+
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones . CLLAVE
+    (17) declaraciones -> declaraciones . declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CLLAVE          shift and go to state 130
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaracion                    shift and go to state 39
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 129
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones . CLLAVE
+    (17) declaraciones -> declaraciones . declaracion
+    (18) declaracion -> . asignacion
+    (19) declaracion -> . declara
+    (20) declaracion -> . condicional
+    (21) declaracion -> . iteracion
+    (22) declaracion -> . impresion
+    (23) declaracion -> . entrada
+    (24) asignacion -> . ID ASIGNAR expresion PUNTOCOMA
+    (25) declara -> . tipo_dato ID PUNTOCOMA
+    (26) declara -> . tipo_dato ID ASIGNAR expresion PUNTOCOMA
+    (44) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (45) condicional -> . IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE
+    (47) iteracion -> . WHILE APAREN expresion CPAREN ALLAVE declaraciones CLLAVE
+    (48) iteracion -> . DO ALLAVE declaraciones CLLAVE WHILE APAREN expresion CPAREN PUNTOCOMA
+    (49) iteracion -> . FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE
+    (50) impresion -> . PRINTF APAREN CADENA CPAREN PUNTOCOMA
+    (51) impresion -> . PRINTF APAREN ID CPAREN PUNTOCOMA
+    (52) entrada -> . SCANF APAREN ID CPAREN PUNTOCOMA
+    (13) tipo_dato -> . INT
+    (14) tipo_dato -> . CHAR
+    (15) tipo_dato -> . FLOAT
+
+    CLLAVE          shift and go to state 131
+    ID              shift and go to state 21
+    IF              shift and go to state 30
+    WHILE           shift and go to state 31
+    DO              shift and go to state 32
+    FOR             shift and go to state 33
+    PRINTF          shift and go to state 34
+    SCANF           shift and go to state 35
+    INT             shift and go to state 5
+    CHAR            shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    declaracion                    shift and go to state 39
+    asignacion                     shift and go to state 24
+    declara                        shift and go to state 25
+    condicional                    shift and go to state 26
+    iteracion                      shift and go to state 27
+    impresion                      shift and go to state 28
+    entrada                        shift and go to state 29
+    tipo_dato                      shift and go to state 20
+
+state 130
+
+    (45) condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .
+
+    RETURN          reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    ID              reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    IF              reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    WHILE           reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    DO              reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    FOR             reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    PRINTF          reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    SCANF           reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    INT             reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    CHAR            reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    FLOAT           reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+    CLLAVE          reduce using rule 45 (condicional -> IF APAREN expresion CPAREN ALLAVE declaraciones CLLAVE ELSE ALLAVE declaraciones CLLAVE .)
+
+
+state 131
+
+    (49) iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .
+
+    RETURN          reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    ID              reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    IF              reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    WHILE           reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    DO              reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    FOR             reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    PRINTF          reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    SCANF           reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    INT             reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    CHAR            reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    FLOAT           reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+    CLLAVE          reduce using rule 49 (iteracion -> FOR APAREN asignacion_for PUNTOCOMA expresion PUNTOCOMA asignacion_for CPAREN ALLAVE declaraciones CLLAVE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PUNTOCOMA in state 59 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 94 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 94 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 94 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 94 resolved as shift
+WARNING: shift/reduce conflict for AND in state 94 resolved as shift
+WARNING: shift/reduce conflict for OR in state 94 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 94 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 94 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 94 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 94 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 94 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 94 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 95 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 95 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 95 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 95 resolved as shift
+WARNING: shift/reduce conflict for AND in state 95 resolved as shift
+WARNING: shift/reduce conflict for OR in state 95 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 95 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 95 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 95 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 95 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 95 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 95 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 96 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 96 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 96 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 96 resolved as shift
+WARNING: shift/reduce conflict for AND in state 96 resolved as shift
+WARNING: shift/reduce conflict for OR in state 96 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 96 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 96 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 96 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 96 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 96 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 96 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 97 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 97 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 97 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 97 resolved as shift
+WARNING: shift/reduce conflict for AND in state 97 resolved as shift
+WARNING: shift/reduce conflict for OR in state 97 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 97 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 97 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 97 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 97 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 97 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 97 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 98 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 98 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 98 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 98 resolved as shift
+WARNING: shift/reduce conflict for AND in state 98 resolved as shift
+WARNING: shift/reduce conflict for OR in state 98 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 98 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 98 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 98 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 98 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 98 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 98 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 99 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 99 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 99 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 99 resolved as shift
+WARNING: shift/reduce conflict for AND in state 99 resolved as shift
+WARNING: shift/reduce conflict for OR in state 99 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 99 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 99 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 99 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 99 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 99 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 99 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 100 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 100 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 100 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 100 resolved as shift
+WARNING: shift/reduce conflict for AND in state 100 resolved as shift
+WARNING: shift/reduce conflict for OR in state 100 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 100 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 100 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 100 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 100 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 100 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 100 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 101 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 101 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 101 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 101 resolved as shift
+WARNING: shift/reduce conflict for AND in state 101 resolved as shift
+WARNING: shift/reduce conflict for OR in state 101 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 101 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 101 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 101 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 101 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 101 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 101 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 102 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 102 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 102 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 102 resolved as shift
+WARNING: shift/reduce conflict for AND in state 102 resolved as shift
+WARNING: shift/reduce conflict for OR in state 102 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 102 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 102 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 102 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 102 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 102 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 102 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 103 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 103 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 103 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 103 resolved as shift
+WARNING: shift/reduce conflict for AND in state 103 resolved as shift
+WARNING: shift/reduce conflict for OR in state 103 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 103 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 103 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 103 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 103 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 103 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 103 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 104 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 104 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 104 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 104 resolved as shift
+WARNING: shift/reduce conflict for AND in state 104 resolved as shift
+WARNING: shift/reduce conflict for OR in state 104 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 104 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 104 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 104 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 104 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 104 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 104 resolved as shift
+WARNING: shift/reduce conflict for SUMA in state 105 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 105 resolved as shift
+WARNING: shift/reduce conflict for MULTI in state 105 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 105 resolved as shift
+WARNING: shift/reduce conflict for AND in state 105 resolved as shift
+WARNING: shift/reduce conflict for OR in state 105 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 105 resolved as shift
+WARNING: shift/reduce conflict for DISTINTO in state 105 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 105 resolved as shift
+WARNING: shift/reduce conflict for MAYORIGUAL in state 105 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 105 resolved as shift
+WARNING: shift/reduce conflict for MENORIGUAL in state 105 resolved as shift
